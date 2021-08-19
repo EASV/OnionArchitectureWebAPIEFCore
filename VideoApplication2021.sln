@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnoTech.VideoApplication2021.UI", "InnoTech.VideoApplication2021.UI\InnoTech.VideoApplication2021.UI.csproj", "{FF76FB29-586D-42DD-ACB4-F8779939F88E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnoTech.VideoApplication2021.Models", "InnoTech.VideoApplication2021.Models\InnoTech.VideoApplication2021.Models.csproj", "{9A18ABFA-379B-48C5-AEE8-64414B02BCBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF76FB29-586D-42DD-ACB4-F8779939F88E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF76FB29-586D-42DD-ACB4-F8779939F88E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF76FB29-586D-42DD-ACB4-F8779939F88E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF76FB29-586D-42DD-ACB4-F8779939F88E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A18ABFA-379B-48C5-AEE8-64414B02BCBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A18ABFA-379B-48C5-AEE8-64414B02BCBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A18ABFA-379B-48C5-AEE8-64414B02BCBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A18ABFA-379B-48C5-AEE8-64414B02BCBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
