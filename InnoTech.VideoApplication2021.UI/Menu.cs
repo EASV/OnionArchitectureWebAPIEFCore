@@ -1,11 +1,19 @@
 using System;
 using System.Data;
 using System.Runtime.InteropServices;
+using InnoTech.VideoApplication2021.BuinessLogic;
+using InnoTech.VideoApplication2021.Models;
 
 namespace InnoTech.VideoApplication2021.UI
 {
     internal class Menu
     {
+        private readonly VideoManager _videoManager;
+
+        public Menu()
+        {
+            _videoManager = new VideoManager();
+        }
         public void Start()
         {
             ShowWelcomeGreeting();
@@ -25,7 +33,7 @@ namespace InnoTech.VideoApplication2021.UI
                 {
                     SearchVideo();
                 }
-                else if (choice == -1)
+                else if (choice == -1 )
                 {
                     PleaseTryAgain();
                 }
@@ -75,7 +83,13 @@ namespace InnoTech.VideoApplication2021.UI
             Print(StringConstants.VideoStoryLine);
             var videoStoryLine = Console.ReadLine();
             //Call Service
-            Print($"Video With Following Properties Created - Name: {videoName} StoryLine: {videoStoryLine}");
+            var video = new Video
+            {
+                Title = videoName,
+                StoryLine = videoStoryLine
+            };
+            video = _videoManager.Create(video);
+            Print($"Video With Following Properties Created - Id: {video.Id.Value} Title: {video.Title} StoryLine: {video.StoryLine}");
             PrintNewLine();
         }
 
