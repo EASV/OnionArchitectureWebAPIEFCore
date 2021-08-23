@@ -14,5 +14,10 @@ namespace InnoTech.VideoApplication2021.Infrastructure.DataAccess.Repositories
             _videosTable.Add(video);
             return video;
         }
+
+        public List<Video> FindAll()
+        {
+            return _videosTable;
+        }
     }
 }

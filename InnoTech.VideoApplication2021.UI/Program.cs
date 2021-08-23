@@ -14,6 +14,7 @@ namespace InnoTech.VideoApplication2021.UI
             //Cheapish DI (Dependency Injection)
             IVideoRepository repo = new VideoRepositoryInMemory();
             IVideoService service = new VideoService(repo);
+            
             var menu = new Menu(service);
             menu.Start();
         }

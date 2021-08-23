@@ -1,4 +1,5 @@
 using System;
+using System.Xml.Serialization;
 using InnotTech.VideoApplication2021.Core.IServices;
 using InnotTech.VideoApplication2021.Core.Models;
 
@@ -25,6 +26,9 @@ namespace InnoTech.VideoApplication2021.UI
                 if (choice == 1)
                 {
                     CreateVideo();
+                } else if (choice == 2)
+                {
+                    ReadAll();
                 } 
                 else if (choice == 5)
                 {
@@ -34,6 +38,16 @@ namespace InnoTech.VideoApplication2021.UI
                 {
                     PleaseTryAgain();
                 }
+            }
+        }
+
+        private void ReadAll()
+        {
+            Print("Here are all your videos");
+            var videos = _service.ReadAll();
+            foreach (var video in videos)
+            {
+                Print($"{video.Id},{video.Title}, {video.StoryLine}");
             }
         }
 
