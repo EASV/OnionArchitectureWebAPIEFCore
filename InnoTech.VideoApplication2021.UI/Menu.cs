@@ -1,18 +1,15 @@
 using System;
-using System.Data;
-using System.Runtime.InteropServices;
-using InnoTech.VideoApplication2021.BuinessLogic;
-using InnoTech.VideoApplication2021.Models;
+using InnotTech.VideoApplication2021.Core.IServices;
+using InnotTech.VideoApplication2021.Core.Models;
 
 namespace InnoTech.VideoApplication2021.UI
 {
     internal class Menu
     {
-        private readonly VideoManager _videoManager;
-
-        public Menu()
+        private IVideoService _service;
+        public Menu(IVideoService service)
         {
-            _videoManager = new VideoManager();
+            _service = service;
         }
         public void Start()
         {
@@ -88,7 +85,7 @@ namespace InnoTech.VideoApplication2021.UI
                 Title = videoName,
                 StoryLine = videoStoryLine
             };
-            video = _videoManager.Create(video);
+            video = _service.Create(video);
             Print($"Video With Following Properties Created - Id: {video.Id.Value} Title: {video.Title} StoryLine: {video.StoryLine}");
             PrintNewLine();
         }

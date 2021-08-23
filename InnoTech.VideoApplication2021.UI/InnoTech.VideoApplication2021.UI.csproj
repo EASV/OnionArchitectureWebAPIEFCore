@@ -6,8 +6,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\InnoTech.VideoApplication2021.BuinessLogic\InnoTech.VideoApplication2021.BuinessLogic.csproj" />
-      <ProjectReference Include="..\InnoTech.VideoApplication2021.Models\InnoTech.VideoApplication2021.Models.csproj" />
+      <ProjectReference Include="..\InnoTech.VideoApplication2021.Domain\InnoTech.VideoApplication2021.Domain.csproj" />
+      <ProjectReference Include="..\InnoTech.VideoApplication2021.Infrastructure.DataAccess\InnoTech.VideoApplication2021.Infrastructure.DataAccess.csproj" />
+      <ProjectReference Include="..\InnotTech.VideoApplication2021.Core\InnotTech.VideoApplication2021.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
