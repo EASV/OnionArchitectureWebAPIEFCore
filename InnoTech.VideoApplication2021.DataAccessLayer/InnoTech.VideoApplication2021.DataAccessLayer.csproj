@@ -5,7 +5,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\InnoTech.VideoApplication2021.DataAccessLayer\InnoTech.VideoApplication2021.DataAccessLayer.csproj" />
       <ProjectReference Include="..\InnoTech.VideoApplication2021.Models\InnoTech.VideoApplication2021.Models.csproj" />
     </ItemGroup>
 

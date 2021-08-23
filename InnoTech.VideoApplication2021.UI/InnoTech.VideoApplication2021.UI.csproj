@@ -10,4 +10,8 @@
       <ProjectReference Include="..\InnoTech.VideoApplication2021.Models\InnoTech.VideoApplication2021.Models.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+    </ItemGroup>
+
 </Project>
