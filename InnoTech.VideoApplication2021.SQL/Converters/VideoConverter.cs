@@ -24,7 +24,7 @@ namespace InnoTech.VideoApplication2021.SQL.Converters
                 ReleaseDate = video.ReleaseDate,
                 StoryLine = video.StoryLine,
                 Title = video.Title,
-                GenreId = video.Genre.Id
+                GenreId = video.Genre != null ? video.Genre.Id : 0
             };
         }
     }

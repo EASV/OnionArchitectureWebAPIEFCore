@@ -5,6 +5,7 @@ using InnoTech.VideoApplication2021.Domain.Services;
 using InnoTech.VideoApplication2021.Infrastructure.DataAccess.Repositories;
 using InnoTech.VideoApplication2021.SQL.Repositories;
 using InnotTech.VideoApplication2021.Core.IServices;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace InnoTech.VideoApplication2021.UI
 {
@@ -12,11 +13,15 @@ namespace InnoTech.VideoApplication2021.UI
     {
         static void Main(string[] args)
         {
-            //Cheapish DI (Dependency Injection)
-            //IVideoRepository repo = new VideoRepositoryInMemory();
-            IVideoRepository repo = new VideoRepository();
+            /*IVideoRepository repo = new VideoRepository();
             IVideoService service = new VideoService(repo);
-            
+            */
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddScoped<IVideoRepository, VideoRepository>();
+            serviceCollection.AddScoped<IVideoService, VideoService>();
+           
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            var service = serviceProvider.GetRequiredService<IVideoService>();
             var menu = new Menu(service);
             menu.Start();
         }
