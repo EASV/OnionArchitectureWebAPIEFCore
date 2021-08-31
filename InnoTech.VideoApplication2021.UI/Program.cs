@@ -14,10 +14,9 @@ namespace InnoTech.VideoApplication2021.UI
         static void Main(string[] args)
         {
             /*IVideoRepository repo = new VideoRepository();
-            IVideoService service = new VideoService(repo);
-            */
+            IVideoService service = new VideoService(repo);*/
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddScoped<IVideoRepository, VideoRepository>();
+            serviceCollection.AddScoped<IVideoRepository, VideoRepositoryInMemory>();
             serviceCollection.AddScoped<IVideoService, VideoService>();
            
             var serviceProvider = serviceCollection.BuildServiceProvider();
