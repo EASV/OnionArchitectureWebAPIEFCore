@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnoTech.VideoApplication20
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innotech.VideoApplication2021.WebApi", "Innotech.VideoApplication2021.WebApi\Innotech.VideoApplication2021.WebApi.csproj", "{5EBF5199-A450-48E9-A954-82A8F4B89F7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnoTech.VideoApplication2021.WebApi.Danish", "InnoTech.VideoApplication2021.WebApi.Danish\InnoTech.VideoApplication2021.WebApi.Danish.csproj", "{828F9475-17C0-43BB-B79E-CBB40AD463D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{5EBF5199-A450-48E9-A954-82A8F4B89F7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EBF5199-A450-48E9-A954-82A8F4B89F7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EBF5199-A450-48E9-A954-82A8F4B89F7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{828F9475-17C0-43BB-B79E-CBB40AD463D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{828F9475-17C0-43BB-B79E-CBB40AD463D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{828F9475-17C0-43BB-B79E-CBB40AD463D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{828F9475-17C0-43BB-B79E-CBB40AD463D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A9CDB342-91C8-472B-8674-E7463197A9CE} = {6EDF1644-614B-4A97-BAD6-2ECA55769CB0}
@@ -79,5 +85,6 @@ Global
 		{68D73732-DAB2-4703-B1B8-CFD2BB414F2E} = {EB697A06-286A-4007-B730-E58C4245FC1B}
 		{684E25A3-94B5-4048-BDC7-5343C909A0AB} = {EB697A06-286A-4007-B730-E58C4245FC1B}
 		{5EBF5199-A450-48E9-A954-82A8F4B89F7C} = {197E6D72-F829-49E2-800D-D58821C1677B}
+		{828F9475-17C0-43BB-B79E-CBB40AD463D9} = {197E6D72-F829-49E2-800D-D58821C1677B}
 	EndGlobalSection
 EndGlobal
