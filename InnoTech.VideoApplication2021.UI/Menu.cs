@@ -14,6 +14,7 @@ namespace InnoTech.VideoApplication2021.UI
         }
         public void Start()
         {
+            Console.Clear();
             ShowWelcomeGreeting();
             StartLoop();
         }

@@ -1,55 +1,93 @@
+using System;
 using System.Collections.Generic;
+using InnoTech.VideoApplication2021.WebApi.Dtos.Videos;
 using InnotTech.VideoApplication2021.Core.IServices;
 using InnotTech.VideoApplication2021.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Innotech.VideoApplication2021.WebApi.Controllers
+namespace InnoTech.VideoApplication2021.WebApi.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class VideosController : ControllerBase
     {
-        private readonly IVideoService _videoService;
-
-        public VideosController(IVideoService videoService)
+        private readonly IVideoService _service;
+        public VideosController(IVideoService service)
         {
-            _videoService = videoService;
+            _service = service;
         }
         
+        //Read All Videos
         [HttpGet]
-        public List<Video> ReadAll()
+        public ActionResult<List<Video>> Get()
         {
-            return _videoService.ReadAll();
-        }
-        
-        [HttpGet("{id}")]
-        public Video ReadById(int id)
-        {
-            //Fix later Read by Id 
-            return null; 
-            //return _videoService.Re();
+            return Ok(_service.ReadAll());
         }
 
-        [HttpPost]  //Body there a json object that matches 
-        public Video Create(Video video)
+        [HttpGet("{id}")]
+        public ActionResult<GetVideoByIdDto> GetById(int id)
         {
-            if (video == null)
+            var video = _service.ReadById(id);
+            return Ok(new GetVideoByIdDto
             {
-                return null;
-            }
-            return _videoService.Create(video);
+                Title = video.Title,
+                StoryLine = video.StoryLine,
+                ReleaseDate = video.ReleaseDate
+            });
         }
         
-        [HttpPut("{id}")]  //Body there a json object that matches 
-        public Video Update(int id, Video video)
+        //Create Video by passing in JSON in the Body
+        [HttpPost]
+        public ActionResult<Video> CreateVideo([FromBody] PostVideoDto dto)
         {
-            return null;
+            var videoFromDto = new Video
+            {
+                Title = dto.Title,
+                StoryLine = dto.StoryLine,
+                ReleaseDate = dto.ReleaseDate,
+                Genre = new Genre
+                {
+                    Id = dto.GenreId
+                }
+            };
+            try
+            {
+                var newVideo = _service.Create(videoFromDto);
+                return Created(
+                    $"https://localhost:5001/api/videos/{newVideo.Id}",
+                    newVideo);
+            }
+            catch (ArgumentException ae)
+            {
+                return BadRequest(ae.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+            
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult<Video> PutVideo(int id, [FromBody] PutVideoDto dto)
+        {
+            if (id != dto.Id)
+            {
+                return BadRequest("Id in param must be the same as in object");
+            }
+            return Ok(_service.Update(new Video
+            {
+                Id = id,
+                Title = dto.Title,
+                ReleaseDate = dto.ReleaseDate,
+                StoryLine = dto.StoryLine
+            }));
         }
 
         [HttpDelete("{id}")]
-        public Video Delete(long id)
+        public ActionResult<Video> DeleteVideo(int id)
         {
-            return null;
+            return Ok(_service.Delete(id));
         }
     }
 }

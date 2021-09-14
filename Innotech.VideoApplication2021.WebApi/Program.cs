@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Innotech.VideoApplication2021.WebApi
+namespace InnoTech.VideoApplication2021.WebApi
 {
     public class Program
     {
