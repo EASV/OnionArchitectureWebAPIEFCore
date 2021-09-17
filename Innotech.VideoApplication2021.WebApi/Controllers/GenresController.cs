@@ -13,17 +13,11 @@ namespace InnoTech.VideoApplication2021.WebApi.Controllers
     [ApiController]
     public class GenresController : ControllerBase
     {
-        private readonly IGenreService _genreService;
+        /*private readonly IGenreService _genreService;
 
         public GenresController(IGenreService genreService)
         {
             _genreService = genreService;
-        }
-        
-        [HttpGet]
-        public ActionResult<List<Genre>> GetAll()
-        {
-            return Ok(_genreService.ReadAll());
-        }
+        }*/
     }
 }

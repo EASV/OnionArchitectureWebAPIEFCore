@@ -1,6 +1,7 @@
 using InnoTech.VideoApplication2021.Domain.IRepositories;
 using InnoTech.VideoApplication2021.Domain.Services;
-using InnoTech.VideoApplication2021.EFSql;
+using InnoTech.VideoApplication2021.EFCore;
+using InnoTech.VideoApplication2021.EFCore.Repositories;
 using InnoTech.VideoApplication2021.EFSql.Repositories;
 using InnotTech.VideoApplication2021.Core.IServices;
 using Microsoft.AspNetCore.Builder;
@@ -40,19 +41,20 @@ namespace InnoTech.VideoApplication2021.WebApi
                     builder.AddConsole();
                 }
             );
-            
-            services.AddDbContext<VideoApplicationContext>(
-                opt =>
+            services.AddDbContext<VideoApplicationDbContext>(
+                options =>
                 {
-                    opt
+                    options
                         .UseLoggerFactory(loggerFactory)
-                        .UseSqlite("Data Source=videoApp.db");
-                }, ServiceLifetime.Transient);
+                        .UseSqlite("Data Source=ostesnask.db");
+                });
             
-            services.AddScoped<IGenreRepository, GenreRepositoryEF>();
+            /*services.AddScoped<IGenreRepository, GenreRepositoryEF>();
             services.AddScoped<IGenreService, GenreService>();
             services.AddScoped<IVideoRepository, VideoRepositoryEF>();
-            services.AddScoped<IVideoService, VideoService>();
+            services.AddScoped<IVideoService, VideoService>();*/
+            services.AddScoped<IInsuranceRepository, InsuranceRepository>();
+            services.AddScoped<IInsuranceService, InsuranceService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,15 +68,17 @@ namespace InnoTech.VideoApplication2021.WebApi
                     c.SwaggerEndpoint(
                         "/swagger/v1/swagger.json", 
                         "InnoTech.VideoApplication2021.WebApi v1"));
-                
+
+
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
-                    var ctx = scope.ServiceProvider.GetService<VideoApplicationContext>();
+                    var ctx = scope.ServiceProvider.GetService<VideoApplicationDbContext>();
                     ctx.Database.EnsureDeleted();
                     ctx.Database.EnsureCreated();
-                 }
+                }
             }
 
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();

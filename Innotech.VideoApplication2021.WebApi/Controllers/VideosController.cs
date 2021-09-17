@@ -11,7 +11,7 @@ namespace InnoTech.VideoApplication2021.WebApi.Controllers
     [ApiController]
     public class VideosController : ControllerBase
     {
-        private readonly IVideoService _service;
+        /*private readonly IVideoService _service;
         public VideosController(IVideoService service)
         {
             _service = service;
@@ -88,6 +88,6 @@ namespace InnoTech.VideoApplication2021.WebApi.Controllers
         public ActionResult<Video> DeleteVideo(int id)
         {
             return Ok(_service.Delete(id));
-        }
+        }*/
     }
 }
