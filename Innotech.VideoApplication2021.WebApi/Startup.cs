@@ -58,7 +58,7 @@ namespace InnoTech.VideoApplication2021.WebApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, VideoApplicationDbContext ctx)
         {
             if (env.IsDevelopment())
             {
@@ -70,12 +70,8 @@ namespace InnoTech.VideoApplication2021.WebApi
                         "InnoTech.VideoApplication2021.WebApi v1"));
 
 
-                using (var scope = app.ApplicationServices.CreateScope())
-                {
-                    var ctx = scope.ServiceProvider.GetService<VideoApplicationDbContext>();
-                    ctx.Database.EnsureDeleted();
-                    ctx.Database.EnsureCreated();
-                }
+                ctx.Database.EnsureDeleted();
+                ctx.Database.EnsureCreated();
             }
 
             
