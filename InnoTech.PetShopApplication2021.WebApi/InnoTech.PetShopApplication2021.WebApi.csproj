@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.10" />
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\InnoTech.PetShopApplication2021.Domain\InnoTech.PetShopApplication2021.Domain.csproj" />
+      <ProjectReference Include="..\InnoTech.PetShopApplication2021.EFCore\InnoTech.PetShopApplication2021.EFCore.csproj" />
+      <ProjectReference Include="..\InnotTech.PetShopApplication2021.Core\InnotTech.PetShopApplication2021.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Controllers" />
+    </ItemGroup>
+
+</Project>
