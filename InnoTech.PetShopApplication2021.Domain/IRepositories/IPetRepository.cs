@@ -6,7 +6,7 @@ namespace InnoTech.PetShopApplication2021.Domain.IRepositories
 {
     public interface IPetRepository
     {
-        List<Pet> ReadAllPets(Filter filter);
-        int Count();
+        List<Pet> ReadAll(Filter filter);
+        int TotalCount();
     }
 }

@@ -15,42 +15,51 @@ namespace InnoTech.PetShopApplication2021.EFCore.Repositories
         {
             _ctx = ctx;
         }
-        public List<Pet> ReadAllPets(Filter filter)
+        public List<Pet> ReadAll(Filter filter)
         {
-            var selectQuery = _ctx.Pets
-                .Select(pe => new Pet
-                {
-                    Id = pe.Id,
-                    Name = pe.Name
-                });
-            var paging = selectQuery.Skip(filter.Count * (filter.Page - 1))
-                .Take(filter.Count); //How many to get back in the Query
-            
-            if (string.IsNullOrEmpty(filter.SortOrder) || filter.SortOrder.Equals("asc"))
+            var selectQuery = _ctx.Pets.Select(pe => new Pet
             {
-                switch (filter.SortBy)
+                Id = pe.Id,
+                Name = pe.Name
+            });
+           
+            if (filter.OrderDir.ToLower().Equals("asc"))
+            {
+                switch (filter.OrderBy.ToLower())
                 {
-                    case "id": 
-                        paging = paging.OrderBy(p => p.Id);
-                        break;
                     case "name":
-                        paging = paging.OrderBy(p => p.Name);
+                        selectQuery = selectQuery.OrderBy(p => p.Name);
+                        break;
+                    case "id":
+                        selectQuery = selectQuery.OrderBy(p => p.Id);
                         break;
                 }
+                
             }
             else
             {
-                switch (filter.SortBy)
+                switch (filter.OrderBy.ToLower())
                 {
-                    case "id": 
-                        paging = paging.OrderByDescending(p => p.Id);
-                        break;
                     case "name":
-                        paging = paging.OrderByDescending(p => p.Name);
+                        selectQuery = selectQuery.OrderByDescending(p => p.Name);
+                        break;
+                    case "id":
+                        selectQuery = selectQuery.OrderByDescending(p => p.Id);
                         break;
                 }
             }
-            return paging.ToList();
+
+            selectQuery = selectQuery.Where(p => p.Name.ToLower().StartsWith(filter.Search.ToLower()));
+            var query = selectQuery
+                .Skip((filter.Page - 1) * filter.Limit)
+                .Take(filter.Limit);
+
+            return query.ToList();
+        }
+
+        public int TotalCount()
+        {
+            return _ctx.Pets.Count();
         }
 
         public int Count()

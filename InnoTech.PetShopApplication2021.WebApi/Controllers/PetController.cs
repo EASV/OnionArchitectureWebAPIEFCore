@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using InnoTech.PetShopApplication2021.WebApi.Dtos;
 using InnotTech.PetShopApplication2021.Core.Filtering;
 using InnotTech.PetShopApplication2021.Core.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,7 +27,6 @@ namespace InnoTech.PetShopApplication2021.WebApi.Controllers
         {
             try
             {
-                var totalCount = _petService.GetTotalPetCount();
                 var list = _petService.GetAllPets(filter);
                 return Ok(new GetAllPetDto
                 {
@@ -34,8 +34,7 @@ namespace InnoTech.PetShopApplication2021.WebApi.Controllers
                     {
                         Id = p.Id,
                         Name = p.Name
-                    }).ToList(),
-                    TotalCount = totalCount
+                    }).ToList()
                 });
             }
             catch (ArgumentException e)

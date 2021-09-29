@@ -7,6 +7,6 @@ namespace InnotTech.PetShopApplication2021.Core.IServices
     public interface IPetService
     {
         List<Pet> GetAllPets(Filter filter);
-        int GetTotalPetCount();
+        int TotalCount();
     }
 }

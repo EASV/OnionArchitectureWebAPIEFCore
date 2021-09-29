@@ -18,23 +18,23 @@ namespace InnoTech.PetShopApplication2021.Domain.Services
         }
         public List<Pet> GetAllPets(Filter filter)
         {
-            if (filter.Count <= 0 || filter.Count > 500)
+            if (filter == null || filter.Limit < 1 || filter.Limit > 100)
             {
-               throw new ArgumentException("You need to put in a filter count between 1 and 500");
+                throw new ArgumentException("Filter Limit must be between 1 and 100");
             }
 
-            var totalCount =  _petRepository.Count();
-            if (filter.Page < 1 || filter.Count * (filter.Page - 1) > totalCount)
-            {
-                throw new ArgumentException($"You need to put in a filter page between 1 and max page size, max page size allowed now: {(totalCount / filter.Count) + 1}");
+            var totalCount = TotalCount();
+            var maxPageCount = Math.Ceiling((double)totalCount / filter.Limit);
+            if (filter.Page < 1 || filter.Page > maxPageCount)
+            { 
+                throw new ArgumentException($"Filter Page must be between 1 and {maxPageCount}");
             }
-            
-            return _petRepository.ReadAllPets(filter);
+            return _petRepository.ReadAll(filter);
         }
 
-        public int GetTotalPetCount()
+        public int TotalCount()
         {
-            return _petRepository.Count();
+            return _petRepository.TotalCount();
         }
     }
 }
